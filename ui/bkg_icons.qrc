@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/invagate">
+        <file>icons/to_left.jpg</file>
+        <file>icons/to_right.jpg</file>
+        <file>icons/to_left_120.png</file>
+        <file>icons/to_left90.png</file>
+        <file>icons/to_right90.png</file>
+        <file>icons/to_right90_on.png</file>
+        <file>icons/to_left90_on.png</file>
+        <file>icons/天道酬勤.gif</file>
+        <file>icons/dragon_phoenix.png</file>
+    </qresource>
+</RCC>
