@@ -305,10 +305,10 @@ void MainWindow::on_manDocAct_triggered()
     QDesktopServices::openUrl (QUrl::fromLocalFile ("help.doc"));
 }
 
-
-
-
-
+void MainWindow::showOverTime(int amount)
+{
+    //show different color according to the amount
+}
 
 
 

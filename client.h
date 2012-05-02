@@ -55,6 +55,8 @@ public slots:
     void cleanObj();
 //退出
     void quit();
+protected:
+     void timerEvent(QTimerEvent *event);
 private:
 //    用于存放临时对象，供最后删除
     QQueue<QObject *> *queue;

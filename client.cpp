@@ -291,3 +291,14 @@ void Client::quit ()
     mwnd->close ();
     delete mwnd;
 }
+
+void Client::timerEvent(QTimerEvent *event)
+{
+    //向服务器发送请求，请求超时商品数量
+    Statics::StaticCntr *staticModule = new Statics::StaticCntr;
+    staticModule->setDatacntr (this->datacntr);
+    queue->enqueue (staticModule);
+    connect (staticModule,SIGNAL(overTimeAmount(int)),mwnd,SLOT(showOverTime(int)));
+
+    staticModule->overTime();
+}

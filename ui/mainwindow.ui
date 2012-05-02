@@ -145,6 +145,17 @@
     <addaction name="lookGoodByPosi"/>
     <addaction name="lookGoodByInfo"/>
    </widget>
+   <widget class="QMenu" name="overTime">
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="title">
+     <string>超时</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menu"/>
    <addaction name="menu_6"/>
@@ -152,6 +163,7 @@
    <addaction name="menu_3"/>
    <addaction name="menu_4"/>
    <addaction name="menu_5"/>
+   <addaction name="overTime"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">

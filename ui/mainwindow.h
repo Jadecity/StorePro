@@ -71,7 +71,9 @@ private slots:
     void on_tabWidget_tabCloseRequested(int index);
     void on_lookGoodByPosi_triggered();
     //切换到下一个表单界面
-        void nextflow(int);
+    void nextflow(int);
+// 显示超时的货物数量
+    void showOverTime(int);
 signals:
 //    通知外部删除临时对象，一个用例已经完成
     void actionFinish();
@@ -108,6 +110,7 @@ signals:
     void send_chk_table(Check_table *,QByteArray);
 //    出库单
     void outstore_signal(Outstore_table*,QByteArray);
+
 };
 
 #endif // MAINWINDOW_H

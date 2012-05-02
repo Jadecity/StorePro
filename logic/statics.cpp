@@ -66,9 +66,12 @@ void StaticCntr::recv (QByteArray data)
             //nowAt
             //build list
             emit dispIncRank (list);
-        }else
+        }else if(!strcmp(str,OVERTIME))
         {
             //do default
+            int amount=0;
+            ds>>amount;
+            emit overTimeAmount(amount);
         }
     }
 }
@@ -123,4 +126,15 @@ void StaticCntr::goodWastage()
     cmd = temp  + cmd;
 
     datacntr->request (this,cmd);
+}
+
+void StaticCntr::overTime()
+{
+    if(NULL != datacntr)
+    {
+        QByteArray cmd;
+        QDataStream ds(&cmd,QIODevice::ReadWrite);
+        ds<<GET<<OVERTIME;
+        datacntr->request(this,cmd);
+    }
 }

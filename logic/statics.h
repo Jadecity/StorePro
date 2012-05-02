@@ -23,12 +23,16 @@ namespace Statics
         void predictNextMonthThroughout();
         void companyBusyDegree();
         void goodWastage();
+        //get overtime goods amount
+        //emit overTimeAmount(int) signal
+        void overTime();
     private:
         DataTrans *datacntr;
     signals:
         void disp(Throughout in_out);
         void disp(Wastage wst);
         void dispIncRank(QList<IncRank> *list);
+        void overTimeAmount(int);
     };
 }
 #endif // STATICS_H

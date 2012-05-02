@@ -111,7 +111,6 @@ void Instore_table::on_btnNext_clicked()
         emit instore_signal (this,cmd);
         emit next(2);
     }
-
 }
 
 void Instore_table::dispstatus (int flag, QByteArray info)
