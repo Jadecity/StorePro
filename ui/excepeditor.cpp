@@ -41,6 +41,6 @@ void ExcepEditor::on_handinButton_clicked()
 void ExcepEditor::rcvData (QByteArray data)
 {
     QString str4(data);
-        QLabel lab(str4);
-        lab.show ();
+        QLabel *lab = new QLabel(str4);
+        lab->show ();
 }

@@ -31,17 +31,19 @@ namespace WorkFlowExcep
     class UExcepMgr:public UpCntrBase
     {
         Q_OBJECT
-    private:
-        DataTrans *datacntr;
     public:
-        UExcepMgr(QObject *parent=0);
+       explicit UExcepMgr(QObject *parent=0);
         void setDatacntr (DataTrans *dc);
+    public slots:
+        void rec_excep(QString *content,unsigned int itemNo=8);
+        void recv (QByteArray data);
+    signals:
+//        把受到的数据交给UI
+        void disp(QByteArray status);
     private:
         QByteArray buildcmd(ExcepRec *);
-    public slots:
-        void rec_excep(QString *content,unsigned int itemNo=0);
-        void disp(QString msg);
-        void recv (QByteArray data);
+        DataTrans *datacntr;
+
     };
 };
 #endif // EXCEPEVENTS_H

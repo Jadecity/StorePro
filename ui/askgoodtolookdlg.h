@@ -2,7 +2,7 @@
 #define ASKGOODTOLOOKDLG_H
 
 #include <QDialog>
-
+#include "logic/globalDataType.h"
 namespace Ui {
     class AskGoodToLookDlg;
 }
@@ -16,7 +16,7 @@ public:
     ~AskGoodToLookDlg();
 public slots:
 //    接收到数据，然后显示
-    void rcvData(QByteArray data);
+    void rcvData(QList<GoodInfo> *list);
 
 private:
     Ui::AskGoodToLookDlg *ui;

@@ -68,19 +68,23 @@ void WorkFlowExcep::UExcepMgr::rec_excep (QString *content,unsigned int itemNo)
 
 void WorkFlowExcep::UExcepMgr::recv (QByteArray data)
 {
-    disp(QString(data));
-    //to be modified
+    QDataStream ds(&data,QIODevice::ReadOnly);
+    char *str;
+    ds>>str;
+    if(!strcmp(str,NOTHING))
+    {
+        QByteArray reason;
+        ds>>reason;
+        emit disp(reason);
+        return;
+    }else if(!strcmp(str,OK))
+    {
+        ds>>str;
+
+        if(!strcmp(str,USR_EXCEPT))
+        {
+            emit disp(QString("OK!").toUtf8 ());
+        }
+    }
 }
 
-void WorkFlowExcep::UExcepMgr::disp(QString msg)
-{
-#ifdef DEBUG
-    int size = msg.size ();
-    for(int i=0;i<size;++i)
-    {
-        cout<<msg.at (i).toAscii ();
-    }
-    cout<<"-->end"<<endl;
-#endif
-    //to be modified
-}

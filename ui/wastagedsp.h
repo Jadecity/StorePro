@@ -2,7 +2,7 @@
 #define WASTAGEDSP_H
 
 #include <QWidget>
-
+#include "logic/globalDataType.h"
 namespace Ui {
     class WastageDsp;
 }
@@ -16,7 +16,7 @@ public:
     ~WastageDsp();
 public slots:
 //    接收并显示数据
-    void rcvData(QByteArray data);
+    void rcvData(Wastage data);
 private:
     Ui::WastageDsp *ui;
 };

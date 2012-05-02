@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>428</height>
+    <width>750</width>
+    <height>508</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -97,7 +97,7 @@
     <rect>
      <x>40</x>
      <y>90</y>
-     <width>461</width>
+     <width>671</width>
      <height>16</height>
     </rect>
    </property>
@@ -108,24 +108,54 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>120</y>
-     <width>461</width>
-     <height>291</height>
+     <x>10</x>
+     <y>130</y>
+     <width>740</width>
+     <height>341</height>
     </rect>
    </property>
    <property name="title">
     <string>当前位置信息</string>
    </property>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTreeWidget" name="treeWidget">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>21</y>
-      <width>451</width>
-      <height>261</height>
+      <x>10</x>
+      <y>20</y>
+      <width>720</width>
+      <height>301</height>
      </rect>
     </property>
+    <column>
+     <property name="text">
+      <string>名称</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>单价</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>总量</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>单位</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>拥有者</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>入库时间</string>
+     </property>
+    </column>
    </widget>
   </widget>
  </widget>

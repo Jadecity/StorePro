@@ -28,32 +28,56 @@ void StaticCntr::recv (QByteArray data)
         cout<<"server gives nothing"<<endl;
 #endif
         return;
-    }
-
-    if(!strcmp (str,THIS_MONTH_THROUGHOUT))
-    {
-
-    }else if(!strcmp(str,NEXT_MONTH_THROUGHOUT))
-    {
-
-    }else if(!strcmp(str,GOOD_WASTAGE))
-    {
-
-    }else if(!strcmp (str,COMPANY_BUSY_RANK))
-    {
-        //do something for default condition
     }else
     {
-        //do default
+        ds>>str;
+        if(!strcmp (str,THIS_MONTH_THROUGHPUT))
+        {
+            Throughout in_out;
+            ds>>in_out.num>>in_out.history>>in_out.fudong;
+            emit disp(in_out);
+        }else if(!strcmp(str,NEXT_MONTH_THROUGHPUT))
+        {
+            Throughout in_out;
+            ds>>in_out.totalnum>>in_out.history>>in_out.fudong>>in_out.num;
+            emit disp(in_out);
+        }else if(!strcmp(str,GOOD_WASTAGE))
+        {
+            Wastage wst;
+            ds>>wst.wastage>>wst.total>>wst.ratio;
+            emit disp(wst);
+        }else if(!strcmp (str,COMPANY_BUSY_RANK))
+        {
+            QList<IncRank> *list = new QList<IncRank>;
+            int num;
+            ds>>num;
+            for(int i=0;i<num;i++)
+            {
+                IncRank rnk;
+                ds>>rnk.rank;
+
+                QByteArray name;
+                ds>>name;
+                rnk.Inc_name = QString::fromUtf8 (name);
+
+                ds>>rnk.trans_amnt;
+                list->push_back (rnk);
+            }
+            //nowAt
+            //build list
+            emit dispIncRank (list);
+        }else
+        {
+            //do default
+        }
     }
-    //call UI components to display
 }
 
 void StaticCntr::thisMonthThroughout ()
 {
     QByteArray cmd;
     QDataStream ds(&cmd,QIODevice::ReadWrite);
-    ds<<GET<<THIS_MONTH_THROUGHOUT;
+    ds<<GET<<THIS_MONTH_THROUGHPUT;
     QByteArray temp;
     QDataStream ds2(&temp,QIODevice::ReadWrite);
     ds2<<cmd.size ();
@@ -66,7 +90,7 @@ void StaticCntr::predictNextMonthThroughout ()
 {
     QByteArray cmd;
     QDataStream ds(&cmd,QIODevice::ReadWrite);
-    ds<<GET<<NEXT_MONTH_THROUGHOUT;
+    ds<<GET<<NEXT_MONTH_THROUGHPUT;
     QByteArray temp;
     QDataStream ds2(&temp,QIODevice::ReadWrite);
     ds2<<cmd.size ();

@@ -21,8 +21,10 @@ ThroughoutDisp::~ThroughoutDisp()
     delete ui;
 }
 
-void ThroughoutDisp::rcvData (QByteArray data)
+void ThroughoutDisp::rcvData (Throughout in_out)
 {
-    //nowAt
-    //display
+    ui->history->setText (QString::number ((in_out.history)));
+    ui->floating->setText (QString::number (in_out.fudong*100));
+    ui->this_or_nextMonth->setText (QString::number (in_out.num));
+    ui->roi->setValue ((int)(in_out.fudong*100)%100);
 }

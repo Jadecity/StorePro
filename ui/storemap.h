@@ -2,7 +2,7 @@
 #define STOREMAP_H
 
 #include <QWidget>
-
+#include "logic/globalDataType.h"
 namespace Ui {
     class StoreMap;
 }
@@ -16,7 +16,7 @@ public:
     ~StoreMap();
 public slots:
     /*显示由外部传过来的数据，按照协议格式显示*/
-    void rcvData(QByteArray data);
+    void rcvData(QList<PosiInfo> *list);
 
 private:
     Ui::StoreMap *ui;

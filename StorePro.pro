@@ -32,14 +32,17 @@ SOURCES += main.cpp \
     ui/excepeditor.cpp \
     ui/diaryeditor.cpp \
     ui/diarydisp.cpp \
-    ui/client.cpp \
     ui/askgoodtolookdlg.cpp \
-    client.cpp
+    client.cpp \
+    logic/accountmgr.cpp \
+    ui/exchange_table.cpp \
+    ui/instore_table.cpp \
+    ui/outstore_table.cpp \
+    ui/check_table.cpp
 
 HEADERS  += \
     logic/workFlow.h \
     logic/upcntrbase.h \
-    logic/ui.h \
     logic/testuecepmgr.h \
     logic/teststoragemgr.h \
     logic/testnetconnector.h \
@@ -62,9 +65,13 @@ HEADERS  += \
     ui/excepeditor.h \
     ui/diaryeditor.h \
     ui/diarydisp.h \
-    ui/client.h \
     ui/askgoodtolookdlg.h \
-    client.h
+    client.h \
+    logic/accountmgr.h \
+    ui/exchange_table.h \
+    ui/instore_table.h \
+    ui/outstore_table.h \
+    ui/check_table.h
 
 FORMS    += \
     ui/wastageDsp.ui \
@@ -77,9 +84,12 @@ FORMS    += \
     ui/excepEditor.ui \
     ui/diaryEditor.ui \
     ui/diarydisp.ui \
-    ui/askGoodToLookDlg.ui
-
-OTHER_FILES +=
+    ui/askGoodToLookDlg.ui \
+    ui/exchange_table.ui \
+    ui/instore_table.ui \
+    ui/outstore_table.ui \
+    ui/check_table.ui
 
 RESOURCES += \
     ui/bkg_icons.qrc
+RC_FILE = StorePro.rc

@@ -2,6 +2,8 @@
 #define WORKFLOW_H
 
 #include "upcntrbase.h"
+#include "logic/cmddef.h"
+
 namespace WorkFlow
 {
     class WorkFlowMgr:public UpCntrBase
@@ -10,6 +12,7 @@ namespace WorkFlow
         public:
             explicit WorkFlowMgr(QObject *parent=0);
             ~WorkFlowMgr();
+            void setDatacntr (DataTrans *dc);
         private:
             DataTrans *datacntr;
         public slots:
@@ -20,8 +23,10 @@ namespace WorkFlow
                 sendTables函数
             */
             //sendTables函数负责将UI缓冲的数据发送到服务器
-            void sendTables();
+            void sendTables(QByteArray,int);
         signals:
+            //将服务器返回的状态显示在UI上
+            void post2ui(int flag,QByteArray data);
     };
 }
 #endif // WORKFLOW_H

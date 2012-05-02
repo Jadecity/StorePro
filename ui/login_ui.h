@@ -2,7 +2,7 @@
 #define LOGIN_UI_H
 
 #include <QDialog>
-
+#include "logic/cmddef.h"
 namespace Ui {
     class Login_ui;
 }

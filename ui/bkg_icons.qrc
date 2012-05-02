@@ -9,5 +9,8 @@
         <file>icons/to_left90_on.png</file>
         <file>icons/天道酬勤.gif</file>
         <file>icons/dragon_phoenix.png</file>
+        <file>icons/header.png</file>
+        <file>icons/left_slide.png</file>
+        <file>icons/StorePro.ico</file>
     </qresource>
 </RCC>

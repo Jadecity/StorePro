@@ -13,9 +13,14 @@ WastageDsp::~WastageDsp()
     delete ui;
 }
 
-void WastageDsp::rcvData(QByteArray data)
+void WastageDsp::rcvData(Wastage data)
 {
     //nowAt
     //display
+    ui->wstNoLabel->setText (QString::number (data.wastage));
+    ui->wstRateLabel->setText (QString::number (data.ratio));
+    ui->totalLabel->setText (QString::number (data.total));
+
+    ui->progressBar->setValue (data.ratio*100);
 }
 

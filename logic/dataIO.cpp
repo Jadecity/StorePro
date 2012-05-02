@@ -12,9 +12,6 @@ using namespace std;
 DataTrans::DataTrans():IOBase()
 {
     net = NULL;
-    /*
-    *connect(this,SIGNAL(dataReady()),SLOT(handIn()));
-    */
 }
 
 DataTrans::DataTrans(Net::NetConnector *net):
@@ -25,8 +22,11 @@ DataTrans::DataTrans(Net::NetConnector *net):
 
 void DataTrans::request (UpCntrBase *caller,QByteArray &cmd)
 {
-    net->write(cmd);
-    msgOwner.enqueue (caller);
+    if(NULL != caller)
+    {
+        msgOwner.enqueue (caller);
+        net->write(cmd);
+    }
 }
 
 void DataTrans::handIn()
@@ -37,13 +37,13 @@ void DataTrans::handIn()
     databuf.clear ();
 }
 
-int  DataTrans::setNet (Net::NetConnector *net)
+int  DataTrans::setNet (Net::NetConnector *_net)
 {
-    if(NULL == net)
+    if(NULL == _net)
         return -1;
     else
     {
-        this->net = net;
+        this->net = _net;
         connect (net,SIGNAL(readyRead()),this,SLOT(readData()));
         return 0;
     }
@@ -55,16 +55,30 @@ void DataTrans::readData ()
     static int curSize = 0;
     static int flag = 1;
     QByteArray temp = net->read (1024);
+    QDataStream dstemp(&temp,QIODevice::ReadOnly);
+    QByteArray test;
+    dstemp>>test;
+    QString str = QString::fromUtf8 (test.data ());
 
+    QByteArray tp = temp;
     if(1 == flag)
     {
-        QDataStream ds(&temp,QIODevice::ReadWrite);
+        QDataStream ds(&tp,QIODevice::ReadWrite);
         ds>>totalSize;
+        char *str1;
+        char *str2;
+        ds>>str1>>str2;
         temp = temp.remove (0,4);
+        tp = tp.remove (0,strlen (str1) + strlen(str2) + 2 + 12);
         flag = 0;
+
+        curSize += tp.size ();
+
+    }else if(0 == flag)
+    {
+        curSize += temp.size ();
     }
 
-    curSize += temp.size ();
     databuf += temp;
 
     if(curSize == totalSize)
@@ -72,9 +86,6 @@ void DataTrans::readData ()
         totalSize = 0;
         curSize = 0;
         flag = 1;
-        /*
-        *emit dataReady();
-        */
         handIn ();
     }
 }

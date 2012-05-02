@@ -2,15 +2,20 @@
 #include <QTextCodec>
 #include "ui/login_ui.h"
 #include "ui/mainwindow.h"
+#include "logic/testnetconnector.h"
+
+#include "client.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
- //   Login_ui login;
-    //login.show ();
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("GB2312"));
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
-    MainWindow *mwnd = new MainWindow;
-    mwnd->show ();
+
+    QApplication::addLibraryPath("./plugins");
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("GBK"));
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("GBK"));
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("GBK"));
+
+    Client *client = new Client;
+    client->start ();
+
     return a.exec();
 }

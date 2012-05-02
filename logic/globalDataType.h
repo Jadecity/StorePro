@@ -4,18 +4,20 @@
 struct PosiInfo
 {
    QString goodname;
-   int stayedtime;
-   int toStay;
+//   int toStay;
    double price;
    int amount;
    QString unit;//unit is evalued how amount is measured
    QString owner;
+   QString arrivetime;
 };
 
 struct GoodInfo
 {
-    int posi[2];
+
     QString name;
+//  int toStay;
+    int posi[2];
     double price;
     int amount;
    QString unit;
@@ -53,10 +55,34 @@ struct IncRank
     QString Inc_name;
 //    频度计数
 //    显示单位是 笔/月
-    int count;
+//    int count;
 //    总共交易金额
     double trans_amnt;
 //    负责人名字
-    QString mgrName;
+//    QString mgrName;
+};
+
+struct Throughout
+{
+//    当前值
+    qint64 totalnum;
+//    吞吐量，单位是件
+    qint64 num;
+//    历史同期
+    qint64 history;
+//    浮动
+    float fudong;
+////    平均
+//     int avrg;
+};
+
+struct Wastage
+{
+//    破损数量
+    qint64 wastage;
+//    总数量
+    qint64 total;
+//    比例
+    float ratio;
 };
 #endif // GLOBALDATATYPE_H

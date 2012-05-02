@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include "net.h"
-#include<windows.h>
 #include<iostream>
 using namespace std;
 

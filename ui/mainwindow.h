@@ -20,6 +20,9 @@ class ThroughoutDisp;
 class WastageDsp;
 class DiaryDisp;
 class Login_ui;
+class Instore_table;
+class Check_table;
+class Outstore_table;
 namespace Ui {
     class MainWindow;
 }
@@ -48,6 +51,12 @@ public slots:
 
 private slots:
     /*delete widget if the tab is closed*/
+    void on_manDocAct_triggered();
+    void on_quitAct_triggered();
+    void on_storHisAct_triggered();
+    void on_chkGoodAct_triggered();
+    void on_outStoreAct_triggered();
+    void on_inStoreAct_triggered();
     void on_curStorAct_triggered();
     void on_logoutAct_triggered();
     void on_loginAct_triggered();
@@ -61,6 +70,8 @@ private slots:
     void on_lookGoodByInfo_triggered();
     void on_tabWidget_tabCloseRequested(int index);
     void on_lookGoodByPosi_triggered();
+    //切换到下一个表单界面
+        void nextflow(int);
 signals:
 //    通知外部删除临时对象，一个用例已经完成
     void actionFinish();
@@ -72,8 +83,8 @@ signals:
 //    info包括了4个QString，按照Diary结构体中的顺序
     void handinDiary(DiaryEditor *,QString *info);
 //去取得历史日志并显示
-//仅仅把显示区域传递出去，并不传递任何其他信息
-    void diaryHistory(DiaryDisp*);
+//仅仅把显示区域传递出去，后面跟起始和终止日期
+    void diaryHistory(DiaryDisp*,QString,QString);
     //去取得本月吞吐并显示
     //仅仅把显示区域传递出去，并不传递任何其他信息
     void mthrough(ThroughoutDisp*);
@@ -91,6 +102,12 @@ signals:
 //    查看当前仓储
 //    指针用于显示返回结果
     void curStore(StoreStatusDsp *);
+//    发送入库数据
+    void instore_signal(Instore_table *,QByteArray);
+//    发送验货单
+    void send_chk_table(Check_table *,QByteArray);
+//    出库单
+    void outstore_signal(Outstore_table*,QByteArray);
 };
 
 #endif // MAINWINDOW_H

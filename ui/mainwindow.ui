@@ -40,8 +40,8 @@
      <rect>
       <x>120</x>
       <y>10</y>
-      <width>781</width>
-      <height>621</height>
+      <width>1000</width>
+      <height>700</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -51,7 +51,10 @@
      </sizepolicy>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>-1</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::ElideLeft</enum>
     </property>
     <property name="tabsClosable">
      <bool>true</bool>
@@ -59,11 +62,22 @@
     <property name="movable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>NOtab</string>
-     </attribute>
-    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>-10</y>
+      <width>121</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="bkg_icons.qrc">:/invagate/icons/left_slide.png</pixmap>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -79,7 +93,6 @@
     <property name="title">
      <string>文件</string>
     </property>
-    <addaction name="printAct"/>
     <addaction name="quitAct"/>
    </widget>
    <widget class="QMenu" name="menu">
@@ -106,7 +119,6 @@
     <addaction name="nxtMthrAct"/>
     <addaction name="brknRateAct"/>
     <addaction name="rnkComAct"/>
-    <addaction name="storHisAct"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
@@ -155,7 +167,6 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="printAct"/>
    <addaction name="separator"/>
    <addaction name="separator"/>
    <addaction name="wDiaryAct"/>
@@ -169,11 +180,6 @@
    <addaction name="loginAct"/>
    <addaction name="logoutAct"/>
   </widget>
-  <action name="printAct">
-   <property name="text">
-    <string>打印</string>
-   </property>
-  </action>
   <action name="quitAct">
    <property name="text">
     <string>退出</string>
@@ -264,11 +270,6 @@
     <string>疑问解答</string>
    </property>
   </action>
-  <action name="storHisAct">
-   <property name="text">
-    <string>历史存储统计</string>
-   </property>
-  </action>
   <action name="curStorAct">
    <property name="text">
     <string>当前仓储量</string>
@@ -288,6 +289,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="bkg_icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

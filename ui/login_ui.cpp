@@ -1,5 +1,6 @@
 #include "login_ui.h"
 #include "ui_login_ui.h"
+#include <QMessageBox>
 
 Login_ui::Login_ui(QWidget *parent) :
     QDialog(parent),
@@ -57,6 +58,7 @@ void Login_ui::on_torightbtn_clicked()
     ds2<<data.size ();
 
     data += temp;
+
 
     emit authorise(data);
 }
