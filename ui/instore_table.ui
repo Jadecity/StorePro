@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 9pt &quot;微软雅黑&quot;;</string>
+  </property>
   <widget class="QLabel" name="head_lable">
    <property name="geometry">
     <rect>
@@ -388,6 +391,11 @@
    </column>
    <column>
     <property name="text">
+     <string>截止时间</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
      <string>X</string>
     </property>
    </column>
@@ -396,6 +404,11 @@
      <string>Y</string>
     </property>
    </column>
+   <item row="0" column="5">
+    <property name="text">
+     <string/>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources>

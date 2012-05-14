@@ -13,13 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 9pt &quot;微软雅黑&quot;;</string>
+  </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
      <y>30</y>
      <width>209</width>
-     <height>52</height>
+     <height>58</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">

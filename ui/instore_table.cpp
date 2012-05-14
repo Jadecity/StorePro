@@ -132,7 +132,7 @@ void Instore_table::dispstatus (int flag, QByteArray info)
         msg->show ();
     }
 
-    if((uint)info[0]>80)
+    if(amount>80)
     {
         //deal with overAmount event
         //let's show a beautiful warning window

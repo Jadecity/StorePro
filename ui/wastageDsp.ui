@@ -13,26 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>40</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>这里应该是个圆饼图</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">font: 12pt &quot;微软雅黑&quot;;</string>
+  </property>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>200</y>
-     <width>61</width>
-     <height>16</height>
+     <width>81</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -42,10 +32,10 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>73</x>
      <y>250</y>
-     <width>54</width>
-     <height>12</height>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -55,10 +45,10 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>290</y>
-     <width>54</width>
-     <height>12</height>
+     <x>70</x>
+     <y>300</y>
+     <width>81</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -70,8 +60,8 @@
     <rect>
      <x>170</x>
      <y>200</y>
-     <width>54</width>
-     <height>12</height>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -81,10 +71,10 @@
   <widget class="QLabel" name="totalLabel">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>250</y>
-     <width>54</width>
-     <height>12</height>
+     <x>170</x>
+     <y>240</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -94,10 +84,10 @@
   <widget class="QLabel" name="wstRateLabel">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>170</x>
      <y>290</y>
-     <width>54</width>
-     <height>12</height>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -107,27 +97,66 @@
   <widget class="QLabel" name="tuliLabel">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>200</y>
-     <width>54</width>
-     <height>12</height>
+     <x>383</x>
+     <y>192</y>
+     <width>61</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>图例</string>
    </property>
   </widget>
-  <widget class="QProgressBar" name="progressBar">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>80</y>
-     <width>261</width>
-     <height>51</height>
+     <x>410</x>
+     <y>240</y>
+     <width>31</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="value">
-    <number>24</number>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 0);</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget_2" native="true">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>290</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 255);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>240</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>破损量</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>280</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>总量</string>
    </property>
   </widget>
  </widget>

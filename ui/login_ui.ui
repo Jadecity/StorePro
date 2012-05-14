@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 9pt &quot;微软雅黑&quot;;
+background-color: rgb(255, 255, 255);</string>
+  </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
   </property>
@@ -186,7 +190,13 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="bkg_icons.qrc">:/invagate/icons/dragon_phoenix.png</pixmap>
+    <pixmap resource="bkg_icons.qrc">:/invagate/icons/eagle_clip_art_3.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="margin">
+    <number>-1</number>
    </property>
   </widget>
   <widget class="QLabel" name="status">

@@ -38,7 +38,9 @@ SOURCES += main.cpp \
     ui/exchange_table.cpp \
     ui/instore_table.cpp \
     ui/outstore_table.cpp \
-    ui/check_table.cpp
+    ui/check_table.cpp \
+    ui/overtimetab.cpp \
+    ui/draw3dpiechart.cpp
 
 HEADERS  += \
     logic/workFlow.h \
@@ -71,7 +73,9 @@ HEADERS  += \
     ui/exchange_table.h \
     ui/instore_table.h \
     ui/outstore_table.h \
-    ui/check_table.h
+    ui/check_table.h \
+    ui/overtimetab.h \
+    ui/draw3dpiechart.h
 
 FORMS    += \
     ui/wastageDsp.ui \
@@ -88,7 +92,8 @@ FORMS    += \
     ui/exchange_table.ui \
     ui/instore_table.ui \
     ui/outstore_table.ui \
-    ui/check_table.ui
+    ui/check_table.ui \
+    ui/overtimetab.ui
 
 RESOURCES += \
     ui/bkg_icons.qrc

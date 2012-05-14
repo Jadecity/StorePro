@@ -26,7 +26,6 @@ Client::Client(QObject *parent) :
 {
     initUI ();
     initLogic ();
-
 }
 
 void Client::initUI ()
@@ -55,6 +54,8 @@ void Client::initUI ()
         connect (mwnd,SIGNAL(send_chk_table(Check_table*,QByteArray)),SLOT(chk_goodHandler(Check_table*,QByteArray)));
         connect(mwnd,SIGNAL(outstore_signal(Outstore_table*,QByteArray)),this,SLOT(outstoreHandler(Outstore_table*,QByteArray)));
        // connect (mwnd,SIGNAL(destroyed()),this,SLOT(quit()));
+        connect(mwnd,SIGNAL(getOverTime()),SLOT(overTimeHandler()));
+        connect(mwnd,SIGNAL(callClientTimeEvent()),SLOT(startMyTimer()));
     }
 }
 
@@ -294,11 +295,35 @@ void Client::quit ()
 
 void Client::timerEvent(QTimerEvent *event)
 {
-    //向服务器发送请求，请求超时商品数量
+//    //向服务器发送请求，请求超时商品数量
+//    static int counter = 0;
+//    if(counter%5 == 0&&counter != 0)
+//    {
+//        counter = 0;
+        Statics::StaticCntr *staticModule = new Statics::StaticCntr;
+        staticModule->setDatacntr (this->datacntr);
+        queue->enqueue (staticModule);
+        connect (staticModule,SIGNAL(overTimeAmount(int)),mwnd,SLOT(showOverTime(int)));
+
+        staticModule->overTime();
+//    }else
+//    {
+//        counter++;
+//    }
+
+}
+
+void Client::overTimeHandler()
+{
     Statics::StaticCntr *staticModule = new Statics::StaticCntr;
     staticModule->setDatacntr (this->datacntr);
     queue->enqueue (staticModule);
-    connect (staticModule,SIGNAL(overTimeAmount(int)),mwnd,SLOT(showOverTime(int)));
+    connect (staticModule,SIGNAL(overTimeDetails_s(QByteArray)),mwnd,SLOT(showOverTimeDetails(QByteArray)));
 
-    staticModule->overTime();
+    staticModule->overTimeDetails();
+}
+
+void Client::startMyTimer()
+{
+    startTimer(2000);
 }

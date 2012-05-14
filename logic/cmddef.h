@@ -33,4 +33,5 @@
 #define EXCEP_STRUCT_SIZE 8
 #define DIARY_STRUCT_SIZE 4
 #define OVERTIME "OVERTIME"
+#define OVERTIME_C "OVERTIME_C"
 #endif // CMDDEF_H

@@ -19,9 +19,11 @@ void StaticCntr::setDatacntr (DataTrans *dc)
 
 void StaticCntr::recv (QByteArray data)
 {
+    int readBytes=0;
     QDataStream ds(&data,QIODevice::ReadOnly);
     char  *str;
     ds>>str;
+    readBytes+= strlen(str);
     if(!strcmp(str,NOTHING))
     {
 #ifdef DEBUG
@@ -31,6 +33,7 @@ void StaticCntr::recv (QByteArray data)
     }else
     {
         ds>>str;
+        readBytes+= strlen(str);
         if(!strcmp (str,THIS_MONTH_THROUGHPUT))
         {
             Throughout in_out;
@@ -72,6 +75,10 @@ void StaticCntr::recv (QByteArray data)
             int amount=0;
             ds>>amount;
             emit overTimeAmount(amount);
+        }else if(!strcmp(str,OVERTIME_C))
+        {
+            QByteArray afterData = data.right(data.size() - 2*sizeof(int)-readBytes-2);
+            emit overTimeDetails_s(afterData);
         }
     }
 }
@@ -134,7 +141,28 @@ void StaticCntr::overTime()
     {
         QByteArray cmd;
         QDataStream ds(&cmd,QIODevice::ReadWrite);
+        QByteArray temp;
+        QDataStream ds2(&temp,QIODevice::ReadWrite);
         ds<<GET<<OVERTIME;
+        ds2<<cmd.size();
+        cmd = temp + cmd;
+        datacntr->request(this,cmd);
+    }
+}
+
+void StaticCntr::overTimeDetails()
+{
+    if(NULL != datacntr)
+    {
+        QByteArray cmd;
+        QDataStream ds(&cmd,QIODevice::ReadWrite);
+        ds<<GET<<OVERTIME_C;
+        QByteArray temp;
+        QDataStream ds2(&temp,QIODevice::ReadWrite);
+        ds<<GET<<OVERTIME_C;
+        ds2<<cmd.size();
+
+        cmd=temp+cmd;
         datacntr->request(this,cmd);
     }
 }

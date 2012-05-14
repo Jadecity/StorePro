@@ -14,11 +14,12 @@
 #include "outstore_table.h"
 #include "check_table.h"
 #include "exchange_table.h"
-
+#include "overtimetab.h"
 #include <QMessageBox>
 #include <QProcess>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QTableWidgetItem>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -143,6 +144,7 @@ void MainWindow::rcvAuthorise (int flag)
 
         enable_all();
         del_login ();
+        emit callClientTimeEvent();
         break;
     }
     case 0://验证没通过
@@ -180,6 +182,7 @@ void MainWindow::disable_all ()
     ui->menu_6->setDisabled (true);
     ui->menu_3->setDisabled (true);
     ui->menu_5->setDisabled (true);
+    ui->menu_7->setDisabled(true);
 
     ui->logoutAct->setDisabled (true);
     ui->newAcntAct->setDisabled (true);
@@ -193,6 +196,7 @@ void MainWindow::disable_all ()
     ui->diaryHisAct->setDisabled (true);
 
     ui->loginAct->setEnabled (true);
+    ui->overtime->setVisible(false);
 }
 
 void MainWindow::enable_all ()
@@ -204,6 +208,7 @@ void MainWindow::enable_all ()
     ui->menu_6->setDisabled (false);
     ui->menu_3->setDisabled (false);
     ui->menu_5->setDisabled (false);
+    ui->menu_7->setDisabled(false);
 
     ui->logoutAct->setDisabled (false);
     ui->newAcntAct->setDisabled (false);
@@ -217,6 +222,7 @@ void MainWindow::enable_all ()
     ui->diaryHisAct->setDisabled (false);
 
     ui->loginAct->setDisabled (true);
+    ui->overtime->setVisible(false);
 }
 
 void MainWindow::on_curStorAct_triggered()
@@ -308,13 +314,69 @@ void MainWindow::on_manDocAct_triggered()
 void MainWindow::showOverTime(int amount)
 {
     //show different color according to the amount
+//    if(amount >0)
+//    {
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/invagate/icons/warning.png"));
+        ui->overtime->setIcon(icon);
+        ui->overtime->setText(QString::number(amount));
+        ui->overtime->setVisible(true);
+//    }
 }
 
+void MainWindow::showOverTimeDetails(QByteArray data)
+{
+    QDataStream ds(&data,QIODevice::ReadOnly);
+    int numOfRows=0;
+    ds>>numOfRows;
+    OverTimeTab *onetab = new OverTimeTab();
 
+    for(int i=0;i<numOfRows;i++)
+    {
+        int serial=0;
+        int amount=0;
+        QByteArray name;
+        QByteArray danwei;
+        QByteArray time;
+        QByteArray owner;
+        QByteArray deadLine;
 
+        ds>>serial>>name>>danwei>>amount>>time>>owner>>deadLine;
 
+        QTableWidgetItem *item1 = new QTableWidgetItem;
+        item1->setText (QString::number (serial));
+        onetab->setItem(i,0,item1);
 
+        QTableWidgetItem *item2 = new QTableWidgetItem;
+        item2->setText (QString(name));
+        onetab->setItem(i,1,item2);
 
+        QTableWidgetItem *item3 = new QTableWidgetItem;
+        item3->setText (QString(danwei));
+        onetab->setItem(i,2,item3);
 
+        QTableWidgetItem *item4 = new QTableWidgetItem;
+        item4->setText (QString::number(amount));
+        onetab->setItem(i,3,item4);
 
+        QTableWidgetItem *item5 = new QTableWidgetItem;
+        item5->setText (QString(time));
+        onetab->setItem(i,4,item5);
 
+        QTableWidgetItem *item6 = new QTableWidgetItem;
+        item6->setText (QString(owner));
+        onetab->setItem(i,5,item6);
+
+        QTableWidgetItem *item7 = new QTableWidgetItem;
+        item7->setText (QString(deadLine));
+        onetab->setItem(i,6,item7);
+    }
+
+    ui->tabWidget->addTab (onetab,QString(tr("货物超时信息")));
+    ui->tabWidget->setCurrentWidget (onetab);
+}
+
+void MainWindow::on_overtime_triggered()
+{
+    emit getOverTime();
+}

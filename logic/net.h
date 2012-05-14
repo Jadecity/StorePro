@@ -6,7 +6,7 @@
 #include<QtGlobal>
 
 //#define DEFADDR "127.0.0.1"
-#define DEFADDR "192.168.12.2"
+#define DEFADDR "192.168.12.12"
 #define DEFPORT 8888
 namespace Net
 {

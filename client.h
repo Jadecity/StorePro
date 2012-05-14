@@ -55,8 +55,10 @@ public slots:
     void cleanObj();
 //退出
     void quit();
-protected:
-     void timerEvent(QTimerEvent *event);
+//处理界面传过来的获取超时货物具体信息的命令
+    void overTimeHandler();
+    void timerEvent(QTimerEvent *event);
+    void startMyTimer();
 private:
 //    用于存放临时对象，供最后删除
     QQueue<QObject *> *queue;

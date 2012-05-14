@@ -48,7 +48,10 @@ public slots:
     void rcvAuthorise(int);
 //    删除登录对像
     void del_login();
-
+// 显示超时的货物数量
+    void showOverTime(int);
+//显示超时的具体货物信息
+    void showOverTimeDetails(QByteArray);
 private slots:
     /*delete widget if the tab is closed*/
     void on_manDocAct_triggered();
@@ -72,8 +75,9 @@ private slots:
     void on_lookGoodByPosi_triggered();
     //切换到下一个表单界面
     void nextflow(int);
-// 显示超时的货物数量
-    void showOverTime(int);
+
+    void on_overtime_triggered();
+
 signals:
 //    通知外部删除临时对象，一个用例已经完成
     void actionFinish();
@@ -110,7 +114,10 @@ signals:
     void send_chk_table(Check_table *,QByteArray);
 //    出库单
     void outstore_signal(Outstore_table*,QByteArray);
-
+//
+    void getOverTime();
+//
+    void callClientTimeEvent();
 };
 
 #endif // MAINWINDOW_H

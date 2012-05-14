@@ -12,5 +12,7 @@
         <file>icons/header.png</file>
         <file>icons/left_slide.png</file>
         <file>icons/StorePro.ico</file>
+        <file>icons/warning.png</file>
+        <file>icons/eagle_clip_art_3.jpg</file>
     </qresource>
 </RCC>
