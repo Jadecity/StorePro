@@ -379,5 +379,6 @@ void Client::delUsersHandler(DelUserWnd *window_pointer)
 //  Get all info from UI and call AccountMgr to
 //  create an account
     QStringList userlist;
+    userlist = window_pointer->getSelected();
     mgr->delUsers(userlist);
 }

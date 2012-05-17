@@ -14,6 +14,7 @@ class DelUserWnd : public QWidget
 public:
     explicit DelUserWnd(QWidget *parent = 0);
     ~DelUserWnd();
+    QStringList getSelected();
 public slots:
     void dispUser(QStringList users);
     void dispInfo(QByteArray info);
@@ -25,6 +26,7 @@ signals:
     void delAction(DelUserWnd * );
 private:
     Ui::DelUserWnd *ui;
+    QStringList usersToDel;
 };
 
 #endif // DELUSERWND_H

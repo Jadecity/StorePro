@@ -115,7 +115,21 @@ void AccountMgr::getUsers()
     datacntr->request (this,cmd);
 }
 
-void AccountMgr::delUsers(QStringList list)
+void AccountMgr::delUsers(QStringList mylist)
 {
+    QByteArray cmd;
+    QDataStream ds(&cmd,QIODevice::ReadWrite);
+    ds<<HANDIN<<D_USERS<<mylist.count();
+    for(int i=0;i<mylist.count();i++)
+    {
+        ds<<mylist.at(i).toUtf8();
+    }
 
+    QByteArray temp;
+    QDataStream ds2(&temp,QIODevice::ReadWrite);
+    ds2<<cmd.size ();
+
+    cmd = temp + cmd;
+
+    datacntr->request (this,cmd);
 }

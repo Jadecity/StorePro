@@ -12,6 +12,7 @@
 #define C_USER "C_USER"
 #define PASSWORD "PASSWORD"
 #define USERS "USERS"
+#define D_USERS "D_USERS"
 
 #define POSI_INFO "POSI_INFO"
 #define GOOD_INFO "GOOD_INFO"

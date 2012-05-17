@@ -24,7 +24,7 @@ public:
 //    获得用户列表
     void getUsers();
 //    删除参数中的用户
-    void delUsers(QStringList list);
+    void delUsers(QStringList mylist);
 //    override parent method
     void setDatacntr (DataTrans *dc);
 public slots:
