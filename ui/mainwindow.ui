@@ -131,7 +131,7 @@
     <addaction name="logoutAct"/>
     <addaction name="newAcntAct"/>
     <addaction name="chpasswdAct"/>
-    <addaction name="bkpasswdAct"/>
+    <addaction name="delUser"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
@@ -273,9 +273,9 @@
     <string>修改密码</string>
    </property>
   </action>
-  <action name="bkpasswdAct">
+  <action name="delUser">
    <property name="text">
-    <string>密码找回</string>
+    <string>删除用户</string>
    </property>
   </action>
   <action name="manDocAct">

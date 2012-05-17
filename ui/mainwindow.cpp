@@ -187,7 +187,7 @@ void MainWindow::disable_all ()
     ui->logoutAct->setDisabled (true);
     ui->newAcntAct->setDisabled (true);
     ui->chpasswdAct->setDisabled (true);
-    ui->bkpasswdAct->setDisabled (true);
+    ui->delUser->setDisabled (true);
     ui->wDiaryAct->setDisabled (true);
     ui->mthrAct->setDisabled (true);
     ui->nxtMthrAct->setDisabled (true);
@@ -213,7 +213,7 @@ void MainWindow::enable_all ()
     ui->logoutAct->setDisabled (false);
     ui->newAcntAct->setDisabled (false);
     ui->chpasswdAct->setDisabled (false);
-    ui->bkpasswdAct->setDisabled (false);
+    ui->delUser->setDisabled (false);
     ui->wDiaryAct->setDisabled (false);
     ui->mthrAct->setDisabled (false);
     ui->nxtMthrAct->setDisabled (false);
@@ -379,4 +379,43 @@ void MainWindow::showOverTimeDetails(QByteArray data)
 void MainWindow::on_overtime_triggered()
 {
     emit getOverTime();
+}
+
+void MainWindow::on_newAcntAct_triggered()
+{
+// show create account window
+    CreateUserWnd *wnd = new CreateUserWnd;
+    ui->tabWidget->addTab (wnd,QString(tr("创建用户")));
+    ui->tabWidget->setCurrentWidget (wnd);
+    ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
+    connect(wnd,SIGNAL(createButtonClicked(CreateUserWnd*)),SIGNAL(createAccount(CreateUserWnd*)));
+    connect(wnd,SIGNAL(dataOk()),SLOT(enableCurrentTab()));
+}
+
+void MainWindow::on_chpasswdAct_triggered()
+{
+// show ui to change password
+    ChangePasswdWnd *wnd = new ChangePasswdWnd;
+    ui->tabWidget->addTab (wnd,QString(tr("创建用户")));
+    ui->tabWidget->setCurrentWidget (wnd);
+    ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
+    connect(wnd,SIGNAL(changeButtonClicked(ChangePasswdWnd*)),SIGNAL(changePasswd(ChangePasswdWnd*)));
+    connect(wnd,SIGNAL(dataOk()),SLOT(enableCurrentTab()));
+}
+
+void MainWindow::on_delUser_triggered()
+{
+//    show ui to disp all common accounts
+    DelUserWnd *wnd = new DelUserWnd;
+    ui->tabWidget->addTab (wnd,QString(tr("创建用户")));
+    ui->tabWidget->setCurrentWidget (wnd);
+    //ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
+    connect(wnd,SIGNAL(delAction(DelUserWnd*)),SIGNAL(delUsers(DelUserWnd*)));
+    //connect(wnd,SIGNAL(dataOk()),SLOT(enableCurrentTab()));
+    emit getUsers(wnd);
+}
+
+void MainWindow::enableCurrentTab()
+{
+     ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),true);
 }

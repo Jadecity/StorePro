@@ -59,6 +59,15 @@ public slots:
     void overTimeHandler();
     void timerEvent(QTimerEvent *event);
     void startMyTimer();
+
+// 处理创建账户
+    void createAccountHandler(CreateUserWnd *window_pointer);
+    //处理修改密码
+    void passwordHandler(ChangePasswdWnd *window_pointer);
+//    处理请求用户列表
+    void getUserHandler(DelUserWnd *window_pointer);
+//    删除多个用户
+    void delUsersHandler(DelUserWnd *window_pointer);
 private:
 //    用于存放临时对象，供最后删除
     QQueue<QObject *> *queue;
@@ -66,7 +75,6 @@ private:
     DataIO::DataTrans *datacntr;
     //主窗口
     MainWindow *mwnd;
-signals:
 };
 
 #endif // CLIENT_H

@@ -1,6 +1,7 @@
 #include "throughoutdisp.h"
 #include "ui_throughoutDisp.h"
 #include <QString>
+#include "draw3dpiechart.h"
 ThroughoutDisp::ThroughoutDisp(QWidget *parent,int flag) :
     QWidget(parent),
     ui(new Ui::ThroughoutDisp)

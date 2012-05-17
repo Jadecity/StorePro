@@ -56,6 +56,11 @@ void Client::initUI ()
        // connect (mwnd,SIGNAL(destroyed()),this,SLOT(quit()));
         connect(mwnd,SIGNAL(getOverTime()),SLOT(overTimeHandler()));
         connect(mwnd,SIGNAL(callClientTimeEvent()),SLOT(startMyTimer()));
+
+        connect(mwnd,SIGNAL(createAccount(CreateUserWnd*)),SLOT(createAccountHandler(CreateUserWnd*)));
+        connect(mwnd,SIGNAL(changePasswd(ChangePasswdWnd*)),SLOT(passwordHandler(ChangePasswdWnd*)));
+        connect(mwnd,SIGNAL(getUsers(DelUserWnd*)),SLOT(getUserHandler(DelUserWnd*)));
+        connect(mwnd,SIGNAL(delUsers(DelUserWnd*)),SLOT(delUsersHandler(DelUserWnd*)));
     }
 }
 
@@ -326,4 +331,53 @@ void Client::overTimeHandler()
 void Client::startMyTimer()
 {
     startTimer(2000);
+}
+
+void Client::createAccountHandler(CreateUserWnd *window_pointer)
+{
+    AccountMgr *mgr = new AccountMgr;
+    mgr->setDatacntr (this->datacntr);
+    queue->enqueue (mgr);
+    connect (mgr,SIGNAL(dispInfo(QByteArray)),window_pointer,SLOT(dispInfo(QByteArray)));
+//  Get all info from UI and call AccountMgr to
+//  create an account
+    QStringList userinfo;
+    userinfo.push_back(window_pointer->getName());
+    userinfo.push_back(window_pointer->getPasswd());
+    mgr->createAccount (userinfo);
+}
+
+void Client::passwordHandler(ChangePasswdWnd *window_pointer)
+{
+    AccountMgr *mgr = new AccountMgr;
+    mgr->setDatacntr (this->datacntr);
+    queue->enqueue (mgr);
+    connect (mgr,SIGNAL(dispInfo(QByteArray)),window_pointer,SLOT(dispInfo(QByteArray)));
+//  Get all info from UI and call AccountMgr to
+//  create an account
+    QStringList passwords;
+    mgr-> changePasswd(passwords);
+}
+
+void Client::getUserHandler(DelUserWnd *window_pointer)
+{
+    AccountMgr *mgr = new AccountMgr;
+    mgr->setDatacntr (this->datacntr);
+    queue->enqueue (mgr);
+    connect (mgr,SIGNAL(dispUser(QStringList)),window_pointer,SLOT(dispUser(QStringList)));
+//  Get all info from UI and call AccountMgr to
+//  create an account
+    mgr-> getUsers();
+}
+
+void Client::delUsersHandler(DelUserWnd *window_pointer)
+{
+    AccountMgr *mgr = new AccountMgr;
+    mgr->setDatacntr (this->datacntr);
+    queue->enqueue (mgr);
+    connect (mgr,SIGNAL(dispInfo(QByteArray)),window_pointer,SLOT(dispInfo(QByteArray)));
+//  Get all info from UI and call AccountMgr to
+//  create an account
+    QStringList userlist;
+    mgr->delUsers(userlist);
 }

@@ -1,5 +1,5 @@
 #include "draw3dpiechart.h"
-#include <math.h> -
+#include <math.h>
 #include <QPainter>
 /*--------------------------------------------------------------------------*/
 /*-------------------------- Constant Definition ---------------------------*/

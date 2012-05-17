@@ -5,6 +5,7 @@
 #include "logic/testnetconnector.h"
 
 #include "client.h"
+QString currentUser;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

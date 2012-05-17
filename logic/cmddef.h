@@ -9,6 +9,9 @@
 //¼ì²âµÇÂ½
 #define CHECK "CHECK"
 #define LOGIN "LOGIN"
+#define C_USER "C_USER"
+#define PASSWORD "PASSWORD"
+#define USERS "USERS"
 
 #define POSI_INFO "POSI_INFO"
 #define GOOD_INFO "GOOD_INFO"

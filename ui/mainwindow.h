@@ -9,6 +9,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "createuserwnd.h"
+#include "changepasswdwnd.h"
+#include "deluserwnd.h"
 class QDialog;
 class DiaryEditor;
 class AskGoodToLookDlg;
@@ -52,6 +55,7 @@ public slots:
     void showOverTime(int);
 //显示超时的具体货物信息
     void showOverTimeDetails(QByteArray);
+    void enableCurrentTab();
 private slots:
     /*delete widget if the tab is closed*/
     void on_manDocAct_triggered();
@@ -77,6 +81,12 @@ private slots:
     void nextflow(int);
 
     void on_overtime_triggered();
+
+    void on_newAcntAct_triggered();
+
+    void on_chpasswdAct_triggered();
+
+    void on_delUser_triggered();
 
 signals:
 //    通知外部删除临时对象，一个用例已经完成
@@ -105,6 +115,13 @@ signals:
     void authorise(QByteArray);
 //    登出
     void logout();
+//    创建账户
+    void createAccount(CreateUserWnd*);
+//    向逻辑请求获取用户列表
+    void getUsers(DelUserWnd *);
+    void changePasswd(ChangePasswdWnd *);
+//    删除用户
+    void delUsers(DelUserWnd *);
 //    查看当前仓储
 //    指针用于显示返回结果
     void curStore(StoreStatusDsp *);

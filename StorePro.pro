@@ -40,7 +40,10 @@ SOURCES += main.cpp \
     ui/outstore_table.cpp \
     ui/check_table.cpp \
     ui/overtimetab.cpp \
-    ui/draw3dpiechart.cpp
+    ui/draw3dpiechart.cpp \
+    ui/createuserwnd.cpp \
+    ui/changepasswdwnd.cpp \
+    ui/deluserwnd.cpp
 
 HEADERS  += \
     logic/workFlow.h \
@@ -75,7 +78,10 @@ HEADERS  += \
     ui/outstore_table.h \
     ui/check_table.h \
     ui/overtimetab.h \
-    ui/draw3dpiechart.h
+    ui/draw3dpiechart.h \
+    ui/createuserwnd.h \
+    ui/changepasswdwnd.h \
+    ui/deluserwnd.h
 
 FORMS    += \
     ui/wastageDsp.ui \
@@ -93,7 +99,10 @@ FORMS    += \
     ui/instore_table.ui \
     ui/outstore_table.ui \
     ui/check_table.ui \
-    ui/overtimetab.ui
+    ui/overtimetab.ui \
+    ui/createuserwnd.ui \
+    ui/changepasswdwnd.ui \
+    ui/deluserwnd.ui
 
 RESOURCES += \
     ui/bkg_icons.qrc
