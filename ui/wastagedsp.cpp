@@ -26,9 +26,10 @@ void WastageDsp::rcvData(Wastage data)
     lstPercent.append(data.ratio);
     lstPercent.append(1-data.ratio);
     CDraw3dPieChart *draw3dPie = new CDraw3dPieChart(this);
-    draw3dPie->setPiePos(100, 40);
+    draw3dPie->setPiePos(130, 40);
     draw3dPie->setPieSize(280, 200);
     draw3dPie->setPiePerCent(lstPercent);
     draw3dPie->setChartDepth(20);
+    draw3dPie->show();
 }
 

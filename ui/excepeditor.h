@@ -2,7 +2,7 @@
 #define EXCEPEDITOR_H
 
 #include <QWidget>
-
+#include <QMessageBox>
 namespace Ui {
     class ExcepEditor;
 }
@@ -17,8 +17,10 @@ public:
 public slots:
 //    显示服务器返回的状态
     void rcvData(QByteArray data);
+    void delMsg();
 private:
     Ui::ExcepEditor *ui;
+    QMessageBox *msg;
 
 private slots:
     void on_handinButton_clicked();

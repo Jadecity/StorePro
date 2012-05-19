@@ -40,12 +40,13 @@ public:
 //    窗口中所有控件设为可用，除了登录
     void enable_all();
 //    窗口中所有控件设为不可用，除了登录
-    void disable_all();
+
 
 private:
     Ui::MainWindow *ui;
     Login_ui *login;
 public slots:
+    void disable_all();
 //    接收验证后的用户状态
 //    0代表没通过，1代表通过
     void rcvAuthorise(int);

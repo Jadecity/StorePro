@@ -56,7 +56,7 @@ int CreateUserWnd::checkInput()
     {
         flag = 1;
 
-    }else if(!t_passwd.compare(t_passwdConfirm)){
+    }else if(t_passwd.compare(t_passwdConfirm)){
         flag = 2;
     }
     return flag;

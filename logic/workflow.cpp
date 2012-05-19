@@ -26,8 +26,9 @@ void WorkFlowMgr::recv (QByteArray data)
     {
         ds>>str;
         ds>>amount;
-        QString res(QChar((char)amount));
-        emit post2ui (1,res.toUtf8 ());
+        QByteArray res;
+        res.append((char)amount);
+        emit post2ui (1,res);
     }
 }
 

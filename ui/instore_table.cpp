@@ -122,27 +122,32 @@ void Instore_table::dispstatus (int flag, QByteArray info)
         connect(msg,SIGNAL(rejected()),this,SLOT(delMsg()));
         msg->addButton (QMessageBox::Ok);
         msg->setText (QString::fromUtf8 (info.data ()));
-        msg->show ();
+
     }else
     {
         msg = new QMessageBox;
         connect(msg,SIGNAL(rejected()),this,SLOT(delMsg()));
         msg->addButton (QMessageBox::Ok);
-        msg->setText (QString::fromUtf8 (info.data ()));
-        msg->show ();
+        msg->setText ("插入成功\n");
     }
 
+    amount = amount>0?amount:-amount;
     if(amount>80)
     {
         //deal with overAmount event
         //let's show a beautiful warning window
         //CoolWarning cw("info");
         //cw.show(time to show);
+        QString error = QString("货物总量已超出警戒线，满仓比例：")+QString("\n")+QString::number(amount);
+        msg->setText(msg->text() + error);
     }
+
+    msg->show ();
 }
 
 void Instore_table::delMsg ()
 {
+    if(msg!=NULL)
     delete msg;
     msg = NULL;
 }

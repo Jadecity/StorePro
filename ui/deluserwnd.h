@@ -16,7 +16,7 @@ public:
     ~DelUserWnd();
     QStringList getSelected();
 public slots:
-    void dispUser(QStringList users);
+    void dispUsers(QStringList users);
     void dispInfo(QByteArray info);
 private slots:
     void on_checkBox_stateChanged(int state);

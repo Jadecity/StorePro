@@ -30,6 +30,10 @@ void AskGoodToLookDlg::on_queryBtn_clicked()
 
 void AskGoodToLookDlg::rcvData (QList<GoodInfo> *list)
 {
+    if(ui->treeWidget->height() > 0)
+    {
+        ui->treeWidget->clear();
+    }
     //nowAt
     int num = list->size ();
     for(int i=0;i<num;i++)

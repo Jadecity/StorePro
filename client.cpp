@@ -330,7 +330,7 @@ void Client::overTimeHandler()
 
 void Client::startMyTimer()
 {
-    startTimer(2000);
+    //startTimer(2000);
 }
 
 void Client::createAccountHandler(CreateUserWnd *window_pointer)
@@ -356,6 +356,8 @@ void Client::passwordHandler(ChangePasswdWnd *window_pointer)
 //  Get all info from UI and call AccountMgr to
 //  create an account
     QStringList passwords;
+    passwords.push_back(window_pointer->getOld());
+    passwords.push_back(window_pointer->getNew());
     mgr-> changePasswd(passwords);
 }
 
@@ -364,7 +366,7 @@ void Client::getUserHandler(DelUserWnd *window_pointer)
     AccountMgr *mgr = new AccountMgr;
     mgr->setDatacntr (this->datacntr);
     queue->enqueue (mgr);
-    connect (mgr,SIGNAL(dispUser(QStringList)),window_pointer,SLOT(dispUser(QStringList)));
+    connect (mgr,SIGNAL(dispUsers(QStringList)),window_pointer,SLOT(dispUsers(QStringList)));
 //  Get all info from UI and call AccountMgr to
 //  create an account
     mgr-> getUsers();

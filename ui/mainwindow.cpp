@@ -125,6 +125,8 @@ void MainWindow::on_loginAct_triggered()
     login = new Login_ui(this);
     connect (login,SIGNAL(authorise(QByteArray)),this,SIGNAL(authorise(QByteArray)));
     connect (login,SIGNAL(cancle_login()),this,SLOT(del_login()));
+    ui->loginAct->setEnabled (false);
+    connect(login,SIGNAL(rejected()),this,SLOT(disable_all()));
     login->show ();
 
 }
@@ -387,7 +389,7 @@ void MainWindow::on_newAcntAct_triggered()
     CreateUserWnd *wnd = new CreateUserWnd;
     ui->tabWidget->addTab (wnd,QString(tr("创建用户")));
     ui->tabWidget->setCurrentWidget (wnd);
-    ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
+//    ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
     connect(wnd,SIGNAL(createButtonClicked(CreateUserWnd*)),SIGNAL(createAccount(CreateUserWnd*)));
     connect(wnd,SIGNAL(dataOk()),SLOT(enableCurrentTab()));
 }
@@ -398,7 +400,7 @@ void MainWindow::on_chpasswdAct_triggered()
     ChangePasswdWnd *wnd = new ChangePasswdWnd;
     ui->tabWidget->addTab (wnd,QString(tr("创建用户")));
     ui->tabWidget->setCurrentWidget (wnd);
-    ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
+//    ui->tabWidget->setTabEnabled(ui->tabWidget->currentIndex(),false);
     connect(wnd,SIGNAL(changeButtonClicked(ChangePasswdWnd*)),SIGNAL(changePasswd(ChangePasswdWnd*)));
     connect(wnd,SIGNAL(dataOk()),SLOT(enableCurrentTab()));
 }

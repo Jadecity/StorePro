@@ -27,7 +27,14 @@ void DelUserWnd::on_checkBox_stateChanged(int state)
 
 void DelUserWnd::on_delButton_clicked()
 {
-    QList<QListWidgetItem *> selected =	ui->listWidget->selectedItems ();
+    QList<QListWidgetItem *> selected;
+    for(int i=0;i<ui->listWidget->count();i++)
+    {
+        if(Qt::Checked == ui->listWidget->item(i)->checkState())
+        {
+            selected.push_back(ui->listWidget->item(i));
+        }
+    }
     QString user;
     for(int i=0;i<selected.count();i++)
     {
@@ -37,7 +44,7 @@ void DelUserWnd::on_delButton_clicked()
     emit delAction(this);
 }
 
-void DelUserWnd::dispUser(QStringList users)
+void DelUserWnd::dispUsers(QStringList users)
 {
     for(int i=0;i<users.count();i++)
     {

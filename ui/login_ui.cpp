@@ -59,7 +59,8 @@ void Login_ui::on_torightbtn_clicked()
 
     data += temp;
 
-
+    extern QString currentUser;
+    currentUser = name;
     emit authorise(data);
 }
 

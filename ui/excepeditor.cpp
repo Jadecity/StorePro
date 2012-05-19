@@ -41,6 +41,16 @@ void ExcepEditor::on_handinButton_clicked()
 void ExcepEditor::rcvData (QByteArray data)
 {
     QString str4(data);
-        QLabel *lab = new QLabel(str4);
-        lab->show ();
+
+        msg = new QMessageBox;
+        connect(msg,SIGNAL(rejected()),this,SLOT(delMsg()));
+        msg->addButton (QMessageBox::Ok);
+        msg->setText (str4);
+        msg->show();
+}
+void ExcepEditor::delMsg ()
+{
+    if(msg!=NULL)
+    delete msg;
+    msg = NULL;
 }

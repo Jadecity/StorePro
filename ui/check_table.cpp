@@ -110,8 +110,27 @@ void Check_table::on_btnNext_clicked()
 void Check_table::dispstatus (int flag, QByteArray data)
 {
     QString str = QString::fromUtf8 (data.data ());
-    QMessageBox *box = new QMessageBox;
-    box->setText (str);
-    box->addButton (QMessageBox::Ok);
-    box->show ();
+
+    if(0 == flag)
+    {
+        msg = new QMessageBox;
+        connect(msg,SIGNAL(rejected()),this,SLOT(delMsg()));
+        msg->addButton (QMessageBox::Ok);
+        msg->setText (QString::fromUtf8 (data.data ()));
+
+    }else
+    {
+        msg = new QMessageBox;
+        connect(msg,SIGNAL(rejected()),this,SLOT(delMsg()));
+        msg->addButton (QMessageBox::Ok);
+        msg->setText ("²åÈë³É¹¦\n");
+    }
+
+    msg->show();
+}
+void Check_table::delMsg ()
+{
+    if(msg!=NULL)
+    delete msg;
+    msg = NULL;
 }

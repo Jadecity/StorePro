@@ -1,4 +1,6 @@
 #include "accountmgr.h"
+#include <QStringList>
+
 AccountMgr::AccountMgr(QObject *parent)
 {
 
@@ -36,7 +38,9 @@ void AccountMgr::recv(QByteArray data)
         ds>>status;
         if(!strcmp(status,C_USER))
         {
-            emit dispInfo(data);
+            QByteArray info;
+            ds>>info;
+            emit dispInfo(info);
         }else if(!strcmp(status,AUTHOR))
         {
             emit disp(0);
@@ -46,15 +50,24 @@ void AccountMgr::recv(QByteArray data)
         }
     }else if(!strcmp(status,OK))
     {
+         ds>>status;
         if(!strcmp(status,C_USER))
         {
             emit dispInfo(data);
-        }else if(!strcmp(status,AUTHOR))
+        }else if(!strcmp(status,LOGIN))
         {
             emit disp(1);
         }else if(!strcmp(status,USERS))
         {
             QStringList userlist;
+            QByteArray mytemp;
+            int count=0;
+            ds>>count;
+            for(int i=0;i<count;i++){
+                ds>>mytemp;
+                userlist.push_back(QString(mytemp));
+            }
+
             emit dispUsers(userlist);
         }else
         {
@@ -119,7 +132,7 @@ void AccountMgr::delUsers(QStringList mylist)
 {
     QByteArray cmd;
     QDataStream ds(&cmd,QIODevice::ReadWrite);
-    ds<<HANDIN<<D_USERS<<mylist.count();
+    ds<<HANDIN<<D_USERS;
     for(int i=0;i<mylist.count();i++)
     {
         ds<<mylist.at(i).toUtf8();

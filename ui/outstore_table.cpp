@@ -121,7 +121,7 @@ void Outstore_table::dispstatus (int flag,QByteArray rcved_data)
     {
         msg = new QMessageBox;
         msg->addButton (QMessageBox::Ok);
-        msg->setText (QString::fromUtf8 (rcved_data));
+        msg->setText ("²Ù×÷³É¹¦");
         msg->show ();
     }
 }

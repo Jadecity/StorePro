@@ -60,7 +60,7 @@ int ChangePasswdWnd::checkInput()
     {
         flag = 1;
 
-    }else if(!t_new.compare(t_newConfirm)){
+    }else if(t_new.compare(t_newConfirm)){
         flag = 2;
     }
     return flag;

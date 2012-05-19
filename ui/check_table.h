@@ -2,7 +2,7 @@
 #define CHECK_TABLE_H
 
 #include <QWidget>
-
+#include <QMessageBox>
 namespace Ui {
     class Check_table;
 }
@@ -19,6 +19,7 @@ public slots:
     void dispstatus(int,QByteArray);
 private:
     Ui::Check_table *ui;
+    QMessageBox *msg;
 
 private slots:
     void on_btnNext_clicked();
@@ -26,6 +27,7 @@ private slots:
     void on_btnNext_pressed();
     void on_btnBack_released();
     void on_btnBack_pressed();
+    void delMsg();
 signals:
     //这两个信号用于在不同步骤间连续切换
     //参数表示要跳转到的步骤标号（标号从0开始）
