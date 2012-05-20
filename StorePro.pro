@@ -43,7 +43,8 @@ SOURCES += main.cpp \
     ui/draw3dpiechart.cpp \
     ui/createuserwnd.cpp \
     ui/changepasswdwnd.cpp \
-    ui/deluserwnd.cpp
+    ui/deluserwnd.cpp \
+    ui/rectdrawer.cpp
 
 HEADERS  += \
     logic/workFlow.h \
@@ -81,7 +82,8 @@ HEADERS  += \
     ui/draw3dpiechart.h \
     ui/createuserwnd.h \
     ui/changepasswdwnd.h \
-    ui/deluserwnd.h
+    ui/deluserwnd.h \
+    ui/rectdrawer.h
 
 FORMS    += \
     ui/wastageDsp.ui \
